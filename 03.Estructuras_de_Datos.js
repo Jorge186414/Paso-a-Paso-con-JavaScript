@@ -100,5 +100,5 @@ const searchContact = () => {
   } while (!searchedName)
   const contact = contacts.find(
     contacts => contacts.contactName.toLowerCase() === searchedName.toLowerCase())
-  return contact || 'No winner found with that name :('
+  return contact || 'No se encontro un contacto con ese nombre'
 }
