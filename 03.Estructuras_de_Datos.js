@@ -61,9 +61,11 @@ console.log(`Arreglo despues de la eliminacion: ${numbers}`)
  * - También se debe proponer una operación de finalización del programa.
 */
 var contacts = []
+
+// Funcion para agregar contactos
 const addContact = () => {
   var newPhoneNumber = null
-  var newUserName = null
+  var newContactName = null
 
   do {
     var phoneNumber = prompt('Ingresa tu numero de telefono')
@@ -77,15 +79,26 @@ const addContact = () => {
   } while (!newPhoneNumber)
 
   do {
-    newUserName = prompt('Ingresa tu nombre')
-    if (!newUserName) {
+    newContactName = prompt('Ingresa tu nombre')
+    if (!newContactName) {
       alert('Ingresa tu nombre de usuario')
     }
-  } while (!newUserName)
+  } while (!newContactName)
 
   var newContact = {
-    userName: newUserName,
+    contactName: newContactName,
     phoneNumber: phoneNumber
   }
-  contacts.push(newContact  )
+  contacts.push(newContact)
+}
+
+// Funcion para buscar contactos
+const searchContact = () => {
+  var searchedName = null
+  do {
+    searchedName = prompt('Ingresa el nombre del contacto a buscar')
+  } while (!searchedName)
+  const contact = contacts.find(
+    contacts => contacts.contactName.toLowerCase() === searchedName.toLowerCase())
+  return contact || 'No winner found with that name :('
 }
