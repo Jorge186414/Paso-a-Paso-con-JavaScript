@@ -102,3 +102,32 @@ const searchContact = () => {
     contacts => contacts.contactName.toLowerCase() === searchedName.toLowerCase())
   return contact || 'No se encontro un contacto con ese nombre'
 }
+
+const updateContact = () => {
+  var searchedName = null
+  do {
+    searchedName = prompt('Ingresa el contacto que quieres editaar:')
+  } while (!searchedName)
+
+  const contactToEdit = contacts.find(contact => {
+    return contact.contactName.toLowerCase() === searchedName.toLowerCase();
+  })
+
+  if (!contactToEdit) {
+    alert('No se encontro un contacto con ese nombre')
+  } else {
+    var newContactName = null
+    var newContactPhone = null
+    do {
+      newContactName = prompt('Ingresa el nuevo nombre de contacto')
+      if (!newContactName) {
+        alert('Ingresa un nuevo nombre de contacto')
+      }
+      newContactPhone = prompt('Ingresa el nuevo numero de telefono')
+      if (!newContactPhone) {
+        alert('Ingresa un nuevo numero de contacto')
+        console.log(newContactPhone)
+      }
+    } while (!newContactName && !newContactPhone)
+  }
+}
