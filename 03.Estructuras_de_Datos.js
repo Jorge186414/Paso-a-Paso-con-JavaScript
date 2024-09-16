@@ -136,3 +136,21 @@ const updateContact = () => {
     } while (!newContactName && !newContactPhone)
   }
 }
+
+const deleteContact = () => {
+  var searchedContact = null
+  do {
+    searchedContact = prompt('Ingresa el usuario a eliminar: ')
+  } while (!searchedContact)
+
+  const contactToDelete = contacts.find(contact => {
+    return contact.contactName.toLowerCase() === searchedContact.toLowerCase()
+  })
+  if (!contactToDelete) {
+    alert('No se encontro un contacto con ese nombre')
+  } else {
+    contacts.splice(contactToDelete, 1)
+    alert('Se elimino el contacto')
+    console.log(contacts)
+  }
+}
