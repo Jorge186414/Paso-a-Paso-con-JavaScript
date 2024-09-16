@@ -106,27 +106,32 @@ const searchContact = () => {
 const updateContact = () => {
   var searchedName = null
   do {
-    searchedName = prompt('Ingresa el contacto que quieres editaar:')
+    searchedName = prompt('Ingresa el contacto que quieres editar:')
   } while (!searchedName)
 
   const contactToEdit = contacts.find(contact => {
-    return contact.contactName.toLowerCase() === searchedName.toLowerCase();
+    return contact.contactName.toLowerCase() === searchedName.toLowerCase()
   })
 
   if (!contactToEdit) {
-    alert('No se encontro un contacto con ese nombre')
+    alert('No se encontró un contacto con ese nombre')
   } else {
     var newContactName = null
     var newContactPhone = null
+
     do {
       newContactName = prompt('Ingresa el nuevo nombre de contacto')
       if (!newContactName) {
         alert('Ingresa un nuevo nombre de contacto')
+      } else {
+        contactToEdit.contactName = newContactName
       }
-      newContactPhone = prompt('Ingresa el nuevo numero de telefono')
+
+      newContactPhone = prompt('Ingresa el nuevo número de teléfono')
       if (!newContactPhone) {
-        alert('Ingresa un nuevo numero de contacto')
-        console.log(newContactPhone)
+        alert('Ingresa un nuevo número de contacto')
+      } else {
+        contactToEdit.phoneNumber = newContactPhone
       }
     } while (!newContactName && !newContactPhone)
   }
