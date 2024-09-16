@@ -100,7 +100,7 @@ const searchContact = () => {
   } while (!searchedName)
   const contact = contacts.find(
     contacts => contacts.contactName.toLowerCase() === searchedName.toLowerCase())
-  return contact || 'No se encontro un contacto con ese nombre'
+  return alert(JSON.stringify(contact, null, 2)) || 'No se encontro un contacto con ese nombre'
 }
 
 const updateContact = () => {
@@ -154,3 +154,47 @@ const deleteContact = () => {
     console.log(contacts)
   }
 }
+
+const showContacts = () => {
+  var contactsToString = JSON.stringify(contacts, null, 2)
+  alert(contactsToString)
+}
+
+const agenda = () => {
+  var option = ''
+  var menu = `Bienvenido a la Agenda, Que deseas realizar
+  1: Agregar nuevo contacto.
+  2: Buscar un contacto.
+  3: Actualizar un contacto.
+  4: Eliminar un contacto.
+  5: Mostrar contactos.
+  6: Salir`
+
+  while (option != 6) {
+    option = prompt(menu)
+    switch (option) {
+      case '1':
+        addContact()
+        break
+      case '2':
+        searchContact()
+        break
+      case '3':
+        updateContact()
+        break
+      case '4':
+        deleteContact()
+        break
+      case '5':
+        showContacts()
+        break
+      case '6':
+        break
+      default:
+        alert('Opcion no valida, intenta con otra')
+        break
+    }
+  }
+}
+
+agenda()
